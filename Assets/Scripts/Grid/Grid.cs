@@ -52,6 +52,7 @@ public class Grid : MonoBehaviour
 
     #region Static Access
     public static float CellSize { get { return instance.cellSize; } }
+    public static float CheckSize { get { return (CellSize / 2f) - 0.1f; } }
     public static LayerMask ObstacleLayers { get { return instance.obstacleLayers; } }
     public static LayerMask MovableObjectLayers { get { return instance.movableObjectLayers; } }
 
@@ -80,7 +81,7 @@ public class Grid : MonoBehaviour
 
     public static MovableObject GetMovableObjectFromWorldPosition(Vector3 worldPosition)
     {
-        var movableObjects = Physics.OverlapSphere(worldPosition, 0.5f, Grid.MovableObjectLayers);
+        var movableObjects = Physics.OverlapSphere(worldPosition, Grid.CheckSize, Grid.MovableObjectLayers);
         if (movableObjects.Length <= 0)
         {
             // If not we're good to go

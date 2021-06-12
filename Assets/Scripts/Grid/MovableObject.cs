@@ -35,7 +35,7 @@ public class MovableObject : MonoBehaviour
         var targetPosition = Grid.GetWorldPosition(gridPosition, direction);
 
         // Check if there is an obstacle
-        var movementBlocked = Physics.CheckSphere(targetPosition, 0.5f, Grid.ObstacleLayers);
+        var movementBlocked = Physics.CheckSphere(targetPosition, Grid.CheckSize, Grid.ObstacleLayers);
         if (movementBlocked)
         {
             return false;
