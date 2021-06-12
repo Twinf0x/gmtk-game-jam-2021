@@ -5,8 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
+    #region Inspect
+    [SerializeField] private PlayerCharacter playerA;
+    [SerializeField] private PlayerCharacter playerB;
+    #endregion
+
     private bool playerAHasReachedGoal = false;
     private bool playerBHasReachedGoal = false;
+    private bool shouldSwitchCharacters = false;
+
+    private void Start()
+    {
+        playerA.IsActivated = true;
+    }
 
     private void Update()
     {
@@ -16,6 +27,18 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        if (shouldSwitchCharacters)
+        {
+            playerA.IsActivated = !playerA.IsActivated;
+            playerB.IsActivated = !playerB.IsActivated;
+
+            shouldSwitchCharacters = false;
+        }
+    }
+
+    #region Winning Levels
     public void PlayerAEnteredGoal()
     {
         playerAHasReachedGoal = true;
@@ -49,6 +72,28 @@ public class LevelController : MonoBehaviour
         // TODO
         Debug.Log("You Win!");
     }
+    #endregion
+
+    #region Player Characters
+    public void SwitchActiveCharacter()
+    {
+        shouldSwitchCharacters = true;
+    }
+
+    public void TryToLinkObjects()
+    {
+        var targetPlayerA = playerA.GetFocussedLinkable();
+        var targetPlayerB = playerB.GetFocussedLinkable();
+
+        if(targetPlayerA == null || targetPlayerB == null)
+        {
+            return;
+        }
+
+        targetPlayerA.LinkWith(targetPlayerB);
+        targetPlayerB.LinkWith(targetPlayerA);
+    }
+    #endregion
 
     private void RestartCurrentLevel()
     {
