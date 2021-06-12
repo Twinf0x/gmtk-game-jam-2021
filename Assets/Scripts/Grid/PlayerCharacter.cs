@@ -9,6 +9,7 @@ public class PlayerCharacter : MovableObject
     [SerializeField] private GridDirection startOrientation = GridDirection.Up;
     [Header("References")]
     [SerializeField] private MovableObject otherCharacter;
+    [SerializeField] private PlayerSprite[] playerSprites;
     [SerializeField] private Transform linkMarkerSelf;
     [SerializeField] private Transform linkMarkerOther;
     #endregion
@@ -59,6 +60,11 @@ public class PlayerCharacter : MovableObject
 
     public override void Move(GridDirection direction)
     {
+        foreach(var sprite in playerSprites)
+        {
+            sprite.SetSprite(direction);
+        }
+
         otherCharacter.Move(direction);
         base.Move(direction);
 
