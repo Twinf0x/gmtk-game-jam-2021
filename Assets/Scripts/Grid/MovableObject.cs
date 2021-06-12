@@ -47,24 +47,15 @@ public class MovableObject : MonoBehaviour
         }
 
         // Check if we would have to push sth out of the way
-        var movableObjects = Physics.OverlapSphere(targetPosition, 0.5f, Grid.MovableObjectLayers);
-        if (movableObjects.Length <= 0)
+        var movableObject = Grid.GetMovableObjectFromWorldPosition(targetPosition);
+        if (movableObject == null)
         {
             // If not we're good to go
             return true;
         }
         else
         {
-            // If there's something, check if it can be pushed
-            var targetObject = movableObjects[0].GetComponent<MovableObject>();
-            // This should never be the case
-            if(targetObject == null)
-            {
-                Debug.LogError("Something's on the movable object layer, but has no MovableObject script attached to it", targetObject);
-                return false;
-            }
-
-            return targetObject.CanMoveInDirection(direction);
+            return movableObject.CanMoveInDirection(direction);
         }
     }
 
@@ -77,5 +68,11 @@ public class MovableObject : MonoBehaviour
 
         desiredPosition = Grid.GetWorldPosition(gridPosition, direction);
         gridPosition += direction.ToVector2();
+
+        var movableObject = Grid.GetMovableObjectFromWorldPosition(desiredPosition);
+        if(movableObject != null)
+        {
+            movableObject.Move(direction);
+        }
     }
 }

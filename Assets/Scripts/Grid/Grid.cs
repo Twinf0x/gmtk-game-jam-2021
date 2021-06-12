@@ -78,6 +78,29 @@ public class Grid : MonoBehaviour
         instance.movableObjects.Add(obj);
     }
 
+    public static MovableObject GetMovableObjectFromWorldPosition(Vector3 worldPosition)
+    {
+        var movableObjects = Physics.OverlapSphere(worldPosition, 0.5f, Grid.MovableObjectLayers);
+        if (movableObjects.Length <= 0)
+        {
+            // If not we're good to go
+            return null;
+        }
+        else
+        {
+            // If there's something, check if it can be pushed
+            var targetObject = movableObjects[0].GetComponent<MovableObject>();
+            // This should never be the case
+            if (targetObject == null)
+            {
+                Debug.LogError("Something's on the movable object layer, but has no MovableObject script attached to it", targetObject);
+                return null;
+            }
+
+            return targetObject;
+        }
+    }
+
     public static bool IsEverythingReady()
     {
         foreach(var obj in instance.movableObjects)
