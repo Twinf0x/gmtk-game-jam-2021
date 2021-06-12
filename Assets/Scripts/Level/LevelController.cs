@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
     private bool playerAHasReachedGoal = false;
     private bool playerBHasReachedGoal = false;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartCurrentLevel();
+        }
+    }
 
     public void PlayerAEnteredGoal()
     {
@@ -39,5 +48,10 @@ public class LevelController : MonoBehaviour
     {
         // TODO
         Debug.Log("You Win!");
+    }
+
+    private void RestartCurrentLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 }
