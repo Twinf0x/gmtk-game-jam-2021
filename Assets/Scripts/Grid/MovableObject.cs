@@ -32,11 +32,6 @@ public class MovableObject : MonoBehaviour
 
     public virtual bool CanMoveInDirection(GridDirection direction)
     {
-        if (transform.position != desiredPosition)
-        {
-            return false;
-        }
-
         var targetPosition = Grid.GetWorldPosition(gridPosition, direction);
 
         // Check if there is an obstacle
