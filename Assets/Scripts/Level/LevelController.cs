@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     #region Inspect
+    [Header("References - Scene")]
     [SerializeField] private PlayerCharacter playerA;
     [SerializeField] private PlayerCharacter playerB;
+    [Header("References - Assets")]
+    [SerializeField] private LinkVFX linkPrefab;
     #endregion
 
     private bool playerAHasReachedGoal = false;
@@ -92,6 +95,8 @@ public class LevelController : MonoBehaviour
 
         targetPlayerA.LinkWith(targetPlayerB);
         targetPlayerB.LinkWith(targetPlayerA);
+        var vfx = Instantiate(linkPrefab);
+        vfx.Initialize(targetPlayerA, targetPlayerB);
     }
     #endregion
 
