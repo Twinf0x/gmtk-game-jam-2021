@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerCharacter : MovableObject
 {
+    public static string TAG_PLAYER_A = "PlayerA";
+    public static string TAG_PLAYER_B = "PlayerB";
+
     #region Inspector
     [Header("Settings")]
     [SerializeField] private GridDirection startOrientation = GridDirection.Up;
