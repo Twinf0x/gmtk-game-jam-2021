@@ -22,6 +22,8 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         playerA.IsActivated = true;
+        activePlayerMarker.parent = playerA.transform;
+        activePlayerMarker.position = playerA.transform.position;
     }
 
     private void Update()
@@ -38,6 +40,17 @@ public class LevelController : MonoBehaviour
         {
             playerA.IsActivated = !playerA.IsActivated;
             playerB.IsActivated = !playerB.IsActivated;
+
+            if (playerA.IsActivated)
+            {
+                activePlayerMarker.parent = playerA.transform;
+                activePlayerMarker.position = playerA.transform.position;
+            }
+            else
+            {
+                activePlayerMarker.parent = playerB.transform;
+                activePlayerMarker.position = playerB.transform.position;
+            }
 
             shouldSwitchCharacters = false;
         }
