@@ -95,7 +95,7 @@ MonoBehaviour:
   startOrientation: 0
   levelController: {fileID: 0}
   playerSprite: {fileID: 3949725127222628649}
-  linkMarkerSelf: {fileID: 1894947399757402920}
+  linkMarker: {fileID: 1894947399757402920}
 --- !u!1001 &1894947400281860459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4901941365498475037, guid: 6644d37e84afe224ab3fa520af7ee436, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4901941365498475037, guid: 6644d37e84afe224ab3fa520af7ee436, type: 3}
       propertyPath: m_LocalPosition.z

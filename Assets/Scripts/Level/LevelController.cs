@@ -9,8 +9,10 @@ public class LevelController : MonoBehaviour
     [Header("References - Scene")]
     [SerializeField] private PlayerCharacter playerA;
     [SerializeField] private PlayerCharacter playerB;
+    [SerializeField] private Transform activePlayerMarker;
     [Header("References - Assets")]
     [SerializeField] private LinkVFX linkPrefab;
+    [SerializeField] private GameObject spellVFXPrefab;
     #endregion
 
     private bool playerAHasReachedGoal = false;
@@ -86,9 +88,25 @@ public class LevelController : MonoBehaviour
     public void TryToLinkObjects()
     {
         var targetPlayerA = playerA.GetFocussedLinkable();
+        if(targetPlayerA == null)
+        {
+            Instantiate(spellVFXPrefab, playerA.linkMarker.position, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(spellVFXPrefab, playerA.linkMarker.position + (Vector3.up * 0.6f), Quaternion.identity);
+        }
         var targetPlayerB = playerB.GetFocussedLinkable();
+        if (targetPlayerB == null)
+        {
+            Instantiate(spellVFXPrefab, playerB.linkMarker.position, Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(spellVFXPrefab, playerB.linkMarker.position + (Vector3.up * 0.6f), Quaternion.identity);
+        }
 
-        if(targetPlayerA == null || targetPlayerB == null)
+        if (targetPlayerA == null || targetPlayerB == null || targetPlayerA == targetPlayerB)
         {
             return;
         }

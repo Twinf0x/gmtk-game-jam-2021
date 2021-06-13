@@ -13,7 +13,7 @@ public class PlayerCharacter : MovableObject
     [Header("References")]
     [SerializeField] private LevelController levelController;
     [SerializeField] private PlayerSprite playerSprite;
-    [SerializeField] private Transform linkMarkerSelf;
+    [SerializeField] public Transform linkMarker;
     #endregion
 
     public bool IsActivated { get; set; }
@@ -21,8 +21,8 @@ public class PlayerCharacter : MovableObject
     internal new void Awake()
     {
         base.Awake();
-        linkMarkerSelf.parent = null;
-        linkMarkerSelf.position = Grid.GetWorldPosition(gridPosition, startOrientation);
+        linkMarker.parent = null;
+        linkMarker.position = Grid.GetWorldPosition(gridPosition, startOrientation);
     }
 
     internal new void Update()
@@ -69,12 +69,12 @@ public class PlayerCharacter : MovableObject
 
         base.Move(direction);
 
-        linkMarkerSelf.position = Grid.GetWorldPosition(gridPosition, direction);
+        linkMarker.position = Grid.GetWorldPosition(gridPosition, direction);
     }
 
     public LinkableObject GetFocussedLinkable()
     {
-        var targetObject = Grid.GetMovableObjectFromWorldPosition(linkMarkerSelf.position);
+        var targetObject = Grid.GetMovableObjectFromWorldPosition(linkMarker.position);
         if (targetObject == null || !(targetObject is LinkableObject))
         {
             return null;

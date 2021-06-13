@@ -45,4 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerA: {fileID: 0}
   playerB: {fileID: 0}
+  activePlayerMarker: {fileID: 0}
   linkPrefab: {fileID: 6751005797548278768, guid: 11c6002a64f699943a65bf8a082ce939, type: 3}
+  spellVFXPrefab: {fileID: 6968378397657080922, guid: cd1f2b2493a712142bfac3c856b17c48, type: 3}
