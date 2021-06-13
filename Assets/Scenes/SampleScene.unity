@@ -1993,6 +1993,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1363991074960793871, guid: b9e4ddd1f6f16244bbc8869dc13fd9ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3190704583948309138, guid: b9e4ddd1f6f16244bbc8869dc13fd9ba, type: 3}
       propertyPath: m_Name
       value: LevelController
