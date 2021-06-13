@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.020756777, g: 0.007856752, b: 0.0335683, a: 1}
+  m_IndirectSpecularColor: {r: 0.019946825, g: 0.007602378, b: 0.03233757, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2014,6 +2014,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 655168668}
     m_Modifications:
+    - target: {fileID: 8541263278101384610, guid: bef73c1fdb19e5b488cf6a3f0f28f61c, type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 446510368}
     - target: {fileID: 8541263278101384612, guid: bef73c1fdb19e5b488cf6a3f0f28f61c, type: 3}
       propertyPath: m_Name
       value: Bridge

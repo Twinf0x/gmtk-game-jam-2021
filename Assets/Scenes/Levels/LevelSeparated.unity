@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.020756777, g: 0.007856752, b: 0.0335683, a: 1}
+  m_IndirectSpecularColor: {r: 0.019946825, g: 0.007602378, b: 0.03233757, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -519,6 +519,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7819013583509913097, guid: 99621513f32d1fb43af63409f30b915d, type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 2671091401369096405}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99621513f32d1fb43af63409f30b915d, type: 3}
 --- !u!4 &323045444 stripped
@@ -3616,6 +3620,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes
       objectReference: {fileID: 0}
+    - target: {fileID: 7819013583509913097, guid: 99621513f32d1fb43af63409f30b915d, type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 2671091401369096405}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99621513f32d1fb43af63409f30b915d, type: 3}
 --- !u!4 &2021444804 stripped
