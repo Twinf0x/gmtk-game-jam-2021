@@ -160,4 +160,9 @@ public class LevelController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
 }

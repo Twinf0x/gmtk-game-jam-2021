@@ -5,7 +5,34 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelBasic.unity
+    guid: 1a43c9cb08dd0e24e873914bc99f2551
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelPush.unity
+    guid: 488b8bd1f42dcf446bd233592bd8f1be
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelSeparated.unity
+    guid: 874172b636d7aa445bf8a12586c93e83
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelChasmEasy.unity
+    guid: a5e115fb538ca7e42977cd74bcda54bc
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelHiddenExit.unity
+    guid: db0f715a0fdca584f87b307dfb79eaa2
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelCross.unity
+    guid: d5a1edfd74ff8c246a9a74d40ee4116c
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelTightSqueeze.unity
+    guid: 801b8cb110431244eb3b461f4d95c1e8
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelChasm.unity
+    guid: 84572dc47b12b5f44b954dc20038ff6e
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelYouFinishedEverything.unity
+    guid: 5346c17cfa3b77849a59d10e9cce57cf
   m_configObjects: {}

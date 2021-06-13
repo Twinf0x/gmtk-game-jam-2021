@@ -26,6 +26,7 @@ public class PlayerCharacter : MovableObject
         base.Awake();
         linkMarker.parent = null;
         linkMarker.position = Grid.GetWorldPosition(gridPosition, startOrientation);
+        playerSprite.SetSprite(startOrientation);
     }
 
     internal new void Update()
