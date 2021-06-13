@@ -156,10 +156,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2bde18751efd14f882ea4c808a56ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDeadly: 1
   blockingState: {fileID: 8288168292923907159}
   nonBlockingState: {fileID: 2924857279694556836}
   blockingSFX: {fileID: 8126135311614899522}
   nonBlockingSFX: {fileID: 3163929743768776966}
+  levelController: {fileID: 0}
 --- !u!82 &8126135311614899522
 AudioSource:
   m_ObjectHideFlags: 0
