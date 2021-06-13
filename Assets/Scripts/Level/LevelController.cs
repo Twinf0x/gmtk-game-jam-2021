@@ -10,6 +10,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private PlayerCharacter playerA;
     [SerializeField] private PlayerCharacter playerB;
     [SerializeField] private Transform activePlayerMarker;
+    [SerializeField] private GameObject youWinCanvas;
     [Header("References - Assets")]
     [SerializeField] private LinkVFX linkPrefab;
     [SerializeField] private GameObject spellVFXPrefab;
@@ -87,8 +88,12 @@ public class LevelController : MonoBehaviour
 
     private void WinLevel()
     {
-        // TODO
-        Debug.Log("You Win!");
+        youWinCanvas.SetActive(true);
+    }
+
+    public void GoToNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
     }
     #endregion
 

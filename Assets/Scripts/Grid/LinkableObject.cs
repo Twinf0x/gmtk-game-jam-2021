@@ -42,15 +42,22 @@ public class LinkableObject : MovableObject
 
     public bool CanMoveInDirection(GridDirection direction, bool checkOnlySelf)
     {
-        if (checkOnlySelf)
-        {
-            return base.CanMoveInDirection(direction);
-        }
-
         List<LinkableObject> allLinkedObjects = new List<LinkableObject>();
         GetAllLinkedObjects(ref allLinkedObjects);
 
-        foreach(var linkedObj in allLinkedObjects)
+        if (checkOnlySelf)
+        {
+            var targetPosition = Grid.GetWorldPosition(gridPosition, direction);
+            var neighbour = Grid.GetMovableObjectFromWorldPosition(targetPosition);
+            if (neighbour is LinkableObject && allLinkedObjects.Contains((LinkableObject)neighbour))
+            {
+                return true;
+            }
+
+            return base.CanMoveInDirection(direction);
+        }
+
+        foreach (var linkedObj in allLinkedObjects)
         {
             if(!linkedObj.CanMoveInDirection(direction, true))
             {
