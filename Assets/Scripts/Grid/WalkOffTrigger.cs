@@ -5,8 +5,11 @@ using UnityEngine.Events;
 
 public class WalkOffTrigger : MonoBehaviour
 {
+    [Header("Optional")]
+    [SerializeField] private PressurePlate pressurePlate;
+    [Header("Settings")]
     [SerializeField] private TriggerActivatedBy activatedBy;
-    [SerializeField] private UnityEvent onLeave;
+    [SerializeField] public UnityEvent onLeave;
 
     public void OnTriggerExit(Collider other)
     {
@@ -15,7 +18,14 @@ public class WalkOffTrigger : MonoBehaviour
             return;
         }
 
-        onLeave?.Invoke();
+        if(pressurePlate != null)
+        {
+            pressurePlate.TriggerWalkOff();
+        }
+        else
+        {
+            onLeave?.Invoke();
+        }
     }
 
     private bool CanTrigger(string tag)

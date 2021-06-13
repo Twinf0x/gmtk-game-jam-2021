@@ -14,6 +14,9 @@ public class PlayerCharacter : MovableObject
     [SerializeField] private LevelController levelController;
     [SerializeField] private PlayerSprite playerSprite;
     [SerializeField] public Transform linkMarker;
+    [Header("Audio")]
+    [SerializeField] private AudioSource sfxFootsteps;
+    [SerializeField] public AudioSource sfxSpell;
     #endregion
 
     public bool IsActivated { get; set; }
@@ -66,6 +69,7 @@ public class PlayerCharacter : MovableObject
     public override void Move(GridDirection direction)
     {
         playerSprite.SetSprite(direction);
+        sfxFootsteps.Play();
 
         base.Move(direction);
 

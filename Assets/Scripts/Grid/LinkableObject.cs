@@ -54,7 +54,7 @@ public class LinkableObject : MovableObject
                 return true;
             }
 
-            return base.CanMoveInDirection(direction);
+            return CanMoveInDirection(direction, allLinkedObjects);
         }
 
         foreach (var linkedObj in allLinkedObjects)
