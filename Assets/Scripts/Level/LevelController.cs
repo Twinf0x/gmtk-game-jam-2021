@@ -14,6 +14,10 @@ public class LevelController : MonoBehaviour
     [Header("References - Assets")]
     [SerializeField] private LinkVFX linkPrefab;
     [SerializeField] private GameObject spellVFXPrefab;
+    [Header("Audio")]
+    [SerializeField] private AudioSource sfxWin;
+    [SerializeField] private AudioSource sfxLose;
+    [SerializeField] private AudioSource sfxSwitch;
     #endregion
 
     private bool playerAHasReachedGoal = false;
@@ -88,7 +92,14 @@ public class LevelController : MonoBehaviour
 
     private void WinLevel()
     {
+        sfxWin.Play();
         youWinCanvas.SetActive(true);
+    }
+
+    public void LoseLevel()
+    {
+        sfxLose.Play();
+        // TODO
     }
 
     public void GoToNextLevel()
@@ -100,11 +111,15 @@ public class LevelController : MonoBehaviour
     #region Player Characters
     public void SwitchActiveCharacter()
     {
+        sfxSwitch.Play();
         shouldSwitchCharacters = true;
     }
 
     public void TryToLinkObjects()
     {
+        playerA.sfxSpell.Play();
+        playerB.sfxSpell.Play();
+
         var targetPlayerA = playerA.GetFocussedLinkable();
         if(targetPlayerA == null)
         {
