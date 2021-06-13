@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerA: {fileID: 0}
   playerB: {fileID: 0}
+  linkPrefab: {fileID: 6751005797548278768, guid: 11c6002a64f699943a65bf8a082ce939, type: 3}
