@@ -7,8 +7,11 @@ public enum TriggerActivatedBy { All, BothPlayers, OnlyPlayerA, OnlyPlayerB }
 
 public class WalkOnTrigger : MonoBehaviour
 {
+    [Header("Optional")]
+    [SerializeField] private PressurePlate pressurePlate;
+    [Header("Settings")]
     [SerializeField] private TriggerActivatedBy activatedBy;
-    [SerializeField] private UnityEvent onEnter;
+    [SerializeField] public UnityEvent onEnter;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -17,7 +20,14 @@ public class WalkOnTrigger : MonoBehaviour
             return;
         }
 
-        onEnter?.Invoke();
+        if (pressurePlate != null)
+        {
+            pressurePlate.TriggerWalkOn();
+        }
+        else
+        {
+            onEnter?.Invoke();
+        }
     }
 
     private bool CanTrigger(string tag)
