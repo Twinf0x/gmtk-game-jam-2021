@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/LevelChasm.unity
     guid: 84572dc47b12b5f44b954dc20038ff6e
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelYouFinishedEverything.unity
+    guid: 5346c17cfa3b77849a59d10e9cce57cf
   m_configObjects: {}
