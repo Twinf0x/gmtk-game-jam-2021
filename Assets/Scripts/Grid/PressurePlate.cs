@@ -17,7 +17,7 @@ public class PressurePlate : MonoBehaviour
     {
         yield return new WaitForSeconds(triggerDelay);
 
-        if(walkOnTriggered && walkOffTriggered)
+        if((walkOnTriggered && walkOffTriggered))
         {
             // Do nothing
         }
