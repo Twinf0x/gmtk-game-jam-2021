@@ -15,7 +15,5 @@ public class LinkVFX : MonoBehaviour
         linkTarget.position = target.transform.position;
         linkStart.parent = start.transform;
         linkTarget.parent = target.transform;
-
-        Destroy(gameObject);
     }
 }
