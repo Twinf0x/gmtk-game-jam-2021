@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LinkableObject : MovableObject
 {
+    [SerializeField] private AudioSource sfxMove;
+
     private List<LinkableObject> linkedObjects = new List<LinkableObject>();
     private bool gotMovementOrderThisFrame = false;
 
@@ -83,6 +85,7 @@ public class LinkableObject : MovableObject
         if (onlySelf)
         {
             gotMovementOrderThisFrame = true;
+            sfxMove.Play();
             base.Move(direction);
             return;
         }

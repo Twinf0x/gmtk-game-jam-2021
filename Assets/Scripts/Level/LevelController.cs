@@ -11,6 +11,7 @@ public class LevelController : MonoBehaviour
     [SerializeField] private PlayerCharacter playerB;
     [SerializeField] private Transform activePlayerMarker;
     [SerializeField] private GameObject youWinCanvas;
+    [SerializeField] private GameObject youLoseCanvas;
     [Header("References - Assets")]
     [SerializeField] private LinkVFX linkPrefab;
     [SerializeField] private GameObject spellVFXPrefab;
@@ -29,6 +30,8 @@ public class LevelController : MonoBehaviour
         playerA.IsActivated = true;
         activePlayerMarker.parent = playerA.transform;
         activePlayerMarker.position = playerA.transform.position;
+
+        Time.timeScale = 1f;
     }
 
     private void Update()
@@ -93,13 +96,15 @@ public class LevelController : MonoBehaviour
     private void WinLevel()
     {
         sfxWin.Play();
+        Time.timeScale = 0f;
         youWinCanvas.SetActive(true);
     }
 
     public void LoseLevel()
     {
         sfxLose.Play();
-        // TODO
+        Time.timeScale = 0f;
+        youLoseCanvas.SetActive(true);
     }
 
     public void GoToNextLevel()
@@ -151,7 +156,7 @@ public class LevelController : MonoBehaviour
     }
     #endregion
 
-    private void RestartCurrentLevel()
+    public void RestartCurrentLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
