@@ -54,6 +54,29 @@ public class MovableObject : MonoBehaviour
         }
     }
 
+    public virtual bool CanMoveInDirection(GridDirection direction, List<LinkableObject> ignoreMembersOfGroup)
+    {
+        var targetPosition = Grid.GetWorldPosition(gridPosition, direction);
+
+        var movementBlocked = Physics.CheckSphere(targetPosition, Grid.CheckSize, Grid.ObstacleLayers);
+        if (movementBlocked)
+        {
+            return false;
+        }
+
+        var movableObject = Grid.GetMovableObjectFromWorldPosition(targetPosition);
+        if (movableObject == null)
+        {
+            return true;
+        }
+        else if(movableObject is LinkableObject && ignoreMembersOfGroup.Contains((LinkableObject)movableObject))
+        {
+            return true;
+        }
+
+        return movableObject.CanMoveInDirection(direction, ignoreMembersOfGroup);
+    }
+
     public virtual void Move(GridDirection direction)
     {
         if (!CanMoveInDirection(direction))
