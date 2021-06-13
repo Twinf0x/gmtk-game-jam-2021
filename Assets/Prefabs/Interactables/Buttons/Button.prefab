@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkOn: {fileID: 5957120470877153584}
   walkOff: {fileID: 37792590363752499}
-  triggerDelay: 0.15
+  ignoreTime: 0.15
 --- !u!114 &5957120470877153584
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,47 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TriggerType { None, WalkOn, WalkOff }
+
 public class PressurePlate : MonoBehaviour
 {
     #region Inspector
     [SerializeField] private WalkOnTrigger walkOn;
     [SerializeField] private WalkOffTrigger walkOff;
-    [SerializeField] private float triggerDelay = 0.1f;
+    [SerializeField] private float ignoreTime = 0.1f;
     #endregion
 
-    private bool walkOnTriggered = false;
-    private bool walkOffTriggered = false;
+    private float timer = 0f;
+    private TriggerType lastTrigger = TriggerType.None;
 
-    private IEnumerator CheckTriggers()
+    private void LateUpdate()
     {
-        yield return new WaitForSeconds(triggerDelay);
-
-        if((walkOnTriggered && walkOffTriggered))
-        {
-            // Do nothing
-        }
-        else if (walkOnTriggered)
-        {
-            walkOn.onEnter?.Invoke();
-        }
-        else if (walkOffTriggered)
-        {
-            walkOff.onLeave?.Invoke();
-        }
-
-        walkOnTriggered = false;
-        walkOffTriggered = false;
+        timer -= Time.deltaTime;
     }
 
     public void TriggerWalkOn()
     {
-        walkOnTriggered = true;
-        StartCoroutine(CheckTriggers());
+        if(timer > 0f)
+        {
+            timer = 0f;
+            return;
+        }
+
+        if(lastTrigger == TriggerType.WalkOn)
+        {
+            timer = ignoreTime;
+            return;
+        }
+
+        walkOn.onEnter?.Invoke();
+        timer = ignoreTime;
+        lastTrigger = TriggerType.WalkOn;
     }
 
     public void TriggerWalkOff()
     {
-        walkOffTriggered = true;
-        StartCoroutine(CheckTriggers());
+        if (timer > 0f)
+        {
+            timer = 0f;
+            return;
+        }
+
+        if(lastTrigger == TriggerType.WalkOff)
+        {
+            timer = ignoreTime;
+            return;
+        }
+
+        walkOff.onLeave?.Invoke();
+        timer = ignoreTime;
+        lastTrigger = TriggerType.WalkOff;
     }
 }
